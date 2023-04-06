@@ -1,3 +1,8 @@
+// structs do not auto Display with println!
+// you must specify
+// Add call to debug for ability to display debug of struct
+
+#[derive(Debug)]
 struct Rectangle {
     width: u32,
     height: u32,
@@ -8,13 +13,10 @@ fn main() {
         width: 30,
         height: 50,
     };
-
-    println!(
-        "The area of the rectangle is {} square pixels.",
-        area(&rect1)
-    );
+    
+    println!("rect1 is {:?}", rect1);
 }
 
-fn area(rectangle: &Rectangle) -> u32 {
+fn area(rectangle: &Rectangle) -> u32 { //immutable borrow of Rectangle
     rectangle.width * rectangle.height
 }
